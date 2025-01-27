@@ -1,18 +1,26 @@
 // sportsee-app/src/components/Poids.jsx
 import PropTypes from 'prop-types';
+import React from 'react';
 
-const Poids = ({ data }) => (
-    <div>
-        <h2>Activité Quotidienne</h2>
-        {data.sessions.map((session, index) => (
-            <div key={index}>
-                <p>Jour: {session.day}</p>
-                <p>Kilogrammes: {session.kilogram}</p>
-                <p>Calories: {session.calories}</p>
-            </div>
-        ))}
-    </div>
-);
+function Poids({ data }) {
+    // Ajout d'une vérification des données
+    if (!data || !data.sessions) {
+        return <div>Chargement...</div>;
+    }
+
+    return (
+        <div>
+            <h2>Activité Quotidienne</h2>
+            {data.sessions.map((session, index) => (
+                <div key={index}>
+                    <p>Jour: {session.day}</p>
+                    <p>Kilogrammes: {session.kilogram}</p>
+                    <p>Calories: {session.calories}</p>
+                </div>
+            ))}
+        </div>
+    );
+}
 
 Poids.propTypes = {
     data: PropTypes.shape({
@@ -27,3 +35,4 @@ Poids.propTypes = {
 };
 
 export default Poids;
+

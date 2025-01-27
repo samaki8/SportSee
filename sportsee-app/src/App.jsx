@@ -1,8 +1,9 @@
 //import { useState } from 'react'
-
-import './App.css';
-import { Outlet } from 'react-router-dom'
-import Header from './components/header.jsx';
+import React from 'react';
+import './styles/App.css';
+import { Outlet } from 'react-router-dom';
+import NavTop from './components/navTop';
+import NavLeft from './components/navLeft';
 
 function App() {
 
@@ -10,7 +11,9 @@ function App() {
   return (
 
     <div>
-      <Header />
+      <NavTop />
+      <NavLeft />
+      <h1> Test</h1>
       <Outlet />
     </div>
 

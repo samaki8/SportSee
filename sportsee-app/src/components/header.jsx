@@ -1,13 +1,25 @@
 // sportsee-app/src/components/Header.jsx
 import PropTypes from 'prop-types';
+import React from 'react';
 
-const Header = ({ userId, userData }) => (
-    <header>
-        <h1>Bienvenue, {userData.userInfos.firstName}</h1>
-        <p>ID Utilisateur: {userId}</p>
-    </header>
-);
+function Header({ userId, userData }) {
+    if (!userData || !userData.userInfos) return null;
+    return (
+        <header>
+            <h1>Bienvenue, {userData.userInfos.firstName}</h1>
+            <p>ID Utilisateur: {userId}</p>
+        </header>)
+}
+Header.propTypes = {
+    userId: PropTypes.string.isRequired,
+    userData: PropTypes.shape({
+        userInfos: PropTypes.shape({
+            firstName: PropTypes.string.isRequired
+        }).isRequired
+    }).isRequired
+};
 
+/*
 Header.propTypes = {
     userId: PropTypes.string.isRequired,
     userData: PropTypes.shape({
@@ -25,7 +37,7 @@ Header.propTypes = {
         })
     }).isRequired,
 };
-
+*/
 export default Header;
 
 

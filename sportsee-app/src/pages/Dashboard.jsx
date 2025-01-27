@@ -1,8 +1,11 @@
-import "./css/dashboard.css";
+//sportsee-app/src/pages/Dashboard.jsx
+//import "./styles/dashboard.css";
+import React from 'react';
+
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
-import { fetchUserActivity, fetchUserPerformance, fetchUserAverageSessions } from "../services/api";
-import { fetchUserData } from "../assets/data/mockData";
+import { fetchUserData, fetchUserActivity, fetchUserPerformance, fetchUserAverageSessions } from "../services/api";
+//import { fetchUserData } from "../assets/mocks/mockData";
 import Header from '../components/header';
 import Poids from '../components/poids';
 import NavTop from '../components/navTop';
@@ -25,6 +28,9 @@ function Dashboard() {
 
     useEffect(() => {
         const getData = async () => {
+            if (!userId) return console.log('No user');
+
+            // Récupération des données utilisateur
             try {
                 const userData = await fetchUserData(userId);
                 setUserData(userData);
@@ -49,7 +55,9 @@ function Dashboard() {
         <div className="dashboard">
             <NavTop />
             <NavLeft />
-            {userData && <Header userId={userId} userData={userData} />}
+            <h1>TEST</h1>
+            {userData?.data && <Header userId={userId} userData={userData.data} />}
+            {/*{userData && <Header userId={userId} userData={userData} />} */}
             {userActivity && <Poids data={userActivity} />}
             <div>
                 {userAverageSessions && <Objectifs data={userAverageSessions} />}
