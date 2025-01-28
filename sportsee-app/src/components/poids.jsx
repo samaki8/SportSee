@@ -7,7 +7,7 @@ function Poids({ data }) {
     if (!data || !data.sessions) {
         return <div>Chargement...</div>;
     }
-
+    console.log(data.sessions)
     return (
         <div>
             <h2>Activité Quotidienne</h2>
@@ -24,6 +24,7 @@ function Poids({ data }) {
 
 Poids.propTypes = {
     data: PropTypes.shape({
+        userID: PropTypes.number,
         sessions: PropTypes.arrayOf(
             PropTypes.shape({
                 day: PropTypes.string.isRequired,

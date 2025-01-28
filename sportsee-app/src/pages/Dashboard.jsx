@@ -58,7 +58,8 @@ function Dashboard() {
             <h1>TEST</h1>
             {userData?.data && <Header userId={userId} userData={userData.data} />}
             {/*{userData && <Header userId={userId} userData={userData} />} */}
-            {userActivity && <Poids data={userActivity} />}
+            {userActivity?.data && <Poids data={userActivity.data} />}
+            {/*{userActivity && <Poids data={userActivity} />} */}
             <div>
                 {userAverageSessions && <Objectifs data={userAverageSessions} />}
                 {userPerformance && <Radar data={userPerformance} />}
