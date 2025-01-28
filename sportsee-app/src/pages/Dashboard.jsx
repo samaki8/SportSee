@@ -61,12 +61,26 @@ function Dashboard() {
             {userActivity?.data && <Poids data={userActivity.data} />}
             {/*{userActivity && <Poids data={userActivity} />} */}
             <div>
-                {userAverageSessions && <Objectifs data={userAverageSessions} />}
-                {userPerformance && <Radar data={userPerformance} />}
-                <Kpi />
+                {userAverageSessions?.data && <Objectifs data={userAverageSessions.data} />}
+                {userPerformance?.data && <Radar data={userPerformance.data} />}
+                {userData?.data && (
+                    <Kpi
+                        userId={Number(userId)}
+                        todayScore={userData.data.todayScore || userData.data.score}
+                    />
+                )}
+
             </div>
             <div>
-                <Calories />
+                {/*userData?.data && <Calories userId={Number(userId)} userData={userData.data} />*/}
+                {userData?.data && (
+                    <Calories
+                        userId={Number(userId)}
+                        userData={userData.data}
+                    />
+                )}
+
+
                 <Proteines />
                 <Glucides />
                 <Lipides />

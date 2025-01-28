@@ -1,18 +1,35 @@
-/*
-async function afficherFilms() {
-  const reponse = await fetch("http://example.com/films.json");
-  const films = await reponse.json();
-  console.log(films);
-}
-  */
+import PropTypes from 'prop-types';
 import React from 'react';
 
-function Calories() {
+function Calories(userId, userData) {
+  if (!userId || !userData.keyData) return <div>Chargement calorieCount...</div>;
+
   return (
-    <div>
-      <h1>Calories</h1>
+    <div className="Calories">
+      <p>{userData.KeyData.calorieCount}kCal Calories</p>
     </div>
-  )
+  );
 }
 
-export default Calories
+
+
+Calories.propTypes = {
+  userId: PropTypes.number.isRequired,
+  userData: PropTypes.shape({
+    keyData: PropTypes.shape({
+      calorieCount: PropTypes.number.isRequired
+    }).isRequired
+  }).isRequired
+
+};
+
+/*
+Calories.propTypes = {
+  userId: PropTypes.number.isRequired,
+  keyData: PropTypes.shape({
+    calorieCount: PropTypes.number.isRequired,
+  }).isRequired
+};
+*/
+
+export default Calories;

@@ -1,5 +1,5 @@
 //sportsee-app\src\services\api.jsx
-//import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../assets/mocks/mockData.js';
+//import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from '../assets/mocks/mockData';
 import React from 'react';
 
 const Base_Url = 'http://localhost:3000';
