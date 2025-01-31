@@ -4,7 +4,7 @@ import React from 'react';
 function Radar({ data }) {
     // Ajout d'une vérification des données
     if (!data || !data.data || !data.kind) {
-        return <div>Chargement...</div>;
+        return <div>Chargement...<span className="loading loading-spinner loading-md"></span></div>;
     }
     console.log('Performance data: ', data)
     return (

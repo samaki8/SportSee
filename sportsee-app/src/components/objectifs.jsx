@@ -3,7 +3,7 @@ import React from 'react';
 
 function Objectifs({ data }) {
     if (!data || !data.sessions) {
-        return <div>Chargement...</div>;
+        return <div>Chargement...<span className="loading loading-spinner loading-md"></span></div>;
     }
     console.log(data.sessions)
     return (

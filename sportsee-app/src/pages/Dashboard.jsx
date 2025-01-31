@@ -51,6 +51,15 @@ function Dashboard() {
         getData(); // Appel de la fonction
     }, [userId]); // Fermeture correcte du useEffect
 
+    if (!userData || !userActivity || !userPerformance || !userAverageSessions) {
+        return (
+            <div className="loading-container">
+                <span className="loading loading-spinner loading-md"></span>
+            </div>
+        );
+    }
+
+
     return (
         <div className="dashboard">
             <NavTop />
@@ -81,9 +90,24 @@ function Dashboard() {
                 )}
 
 
-                <Proteines />
-                <Glucides />
-                <Lipides />
+                {userData?.data && (
+                    <Proteines
+                        userId={Number(userId)}
+                        userData={userData.data}
+                    />
+                )}
+                {userData?.data && (
+                    <Glucides
+                        userId={Number(userId)}
+                        userData={userData.data}
+                    />
+                )}
+                {userData?.data && (
+                    <Lipides
+                        userId={Number(userId)}
+                        userData={userData.data}
+                    />
+                )}
             </div>
 
             <h1>Dashboard</h1>

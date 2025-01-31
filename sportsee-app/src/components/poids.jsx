@@ -5,7 +5,7 @@ import React from 'react';
 function Poids({ data }) {
     // Ajout d'une vérification des données
     if (!data || !data.sessions) {
-        return <div>Chargement...</div>;
+        return <div>Chargement...<span className="loading loading-spinner loading-md"></span></div>;
     }
     console.log(data.sessions)
     return (

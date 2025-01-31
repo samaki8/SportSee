@@ -1,17 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function Calories(userId, userData) {
-  if (!userId || !userData.keyData) return <div>Chargement calorieCount...</div>;
+function Calories({ userId, userData }) {
+  if (!userId || !userData.keyData) return <div>Chargement calorieCount...<span className="loading loading-spinner loading-md"></span></div>;
 
   return (
     <div className="Calories">
-      <p>{userData.KeyData.calorieCount}kCal Calories</p>
+      <p>{userData.keyData.calorieCount} kCal Calories</p>
     </div>
   );
 }
-
-
 
 Calories.propTypes = {
   userId: PropTypes.number.isRequired,
@@ -20,8 +18,9 @@ Calories.propTypes = {
       calorieCount: PropTypes.number.isRequired
     }).isRequired
   }).isRequired
-
 };
+
+export default Calories;
 
 /*
 Calories.propTypes = {
@@ -31,5 +30,3 @@ Calories.propTypes = {
   }).isRequired
 };
 */
-
-export default Calories;

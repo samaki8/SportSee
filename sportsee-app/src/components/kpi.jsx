@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 function Kpi({ userId, todayScore }) {
-    if (!todayScore) return <div>Chargement Kpi...</div>;
+    if (!todayScore) return <div>Chargement Kpi...<span className="loading loading-spinner loading-md"></span></div>;
 
     return (
         <div className="kpi">
