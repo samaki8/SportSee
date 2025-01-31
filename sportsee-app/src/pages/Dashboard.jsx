@@ -59,60 +59,41 @@ function Dashboard() {
         );
     }
 
-
     return (
-        <div className="dashboard">
-            <NavTop />
+        <div className="flex">
             <NavLeft />
-            <h1>TEST</h1>
-            {userData?.data && <Header userId={userId} userData={userData.data} />}
-            {/*{userData && <Header userId={userId} userData={userData} />} */}
-            {userActivity?.data && <Poids data={userActivity.data} />}
-            {/*{userActivity && <Poids data={userActivity} />} */}
-            <div>
-                {userAverageSessions?.data && <Objectifs data={userAverageSessions.data} />}
-                {userPerformance?.data && <Radar data={userPerformance.data} />}
-                {userData?.data && (
-                    <Kpi
-                        userId={Number(userId)}
-                        todayScore={userData.data.todayScore || userData.data.score}
-                    />
-                )}
-
+            <div className="flex-1">
+                <NavTop />
+                <div className="dashboard p-8">
+                    {userData?.data && <Header userId={userId} userData={userData.data} />}
+                    <div className="flex gap-8 mb-8">
+                        {userActivity?.data && <Poids data={userActivity.data} />}
+                    </div>
+                    <div className="flex gap-8 mb-8">
+                        {userAverageSessions?.data && <Objectifs data={userAverageSessions.data} />}
+                        {userPerformance?.data && <Radar data={userPerformance.data} />}
+                        {userData?.data && (
+                            <Kpi
+                                userId={Number(userId)}
+                                todayScore={userData.data.todayScore || userData.data.score}
+                            />
+                        )}
+                    </div>
+                    <div className="flex gap-8">
+                        {userData?.data && (
+                            <>
+                                <Calories userId={Number(userId)} userData={userData.data} />
+                                <Proteines userId={Number(userId)} userData={userData.data} />
+                                <Glucides userId={Number(userId)} userData={userData.data} />
+                                <Lipides userId={Number(userId)} userData={userData.data} />
+                            </>
+                        )}
+                    </div>
+                </div>
             </div>
-            <div>
-                {/*userData?.data && <Calories userId={Number(userId)} userData={userData.data} />*/}
-                {userData?.data && (
-                    <Calories
-                        userId={Number(userId)}
-                        userData={userData.data}
-                    />
-                )}
-
-
-                {userData?.data && (
-                    <Proteines
-                        userId={Number(userId)}
-                        userData={userData.data}
-                    />
-                )}
-                {userData?.data && (
-                    <Glucides
-                        userId={Number(userId)}
-                        userData={userData.data}
-                    />
-                )}
-                {userData?.data && (
-                    <Lipides
-                        userId={Number(userId)}
-                        userData={userData.data}
-                    />
-                )}
-            </div>
-
-            <h1>Dashboard</h1>
         </div>
     );
+
 }
 
 export default Dashboard;

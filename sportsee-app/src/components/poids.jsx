@@ -1,23 +1,93 @@
 // sportsee-app/src/components/Poids.jsx
 import PropTypes from 'prop-types';
 import React from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 function Poids({ data }) {
-    // Ajout d'une vérification des données
     if (!data || !data.sessions) {
         return <div>Chargement...<span className="loading loading-spinner loading-md"></span></div>;
     }
-    console.log(data.sessions)
-    return (
-        <div>
-            <h2>Activité Quotidienne</h2>
-            {data.sessions.map((session, index) => (
-                <div key={index}>
-                    <p>Jour: {session.day}</p>
-                    <p>Kilogrammes: {session.kilogram}</p>
-                    <p>Calories: {session.calories}</p>
+
+    // Formater les données pour l'affichage
+    const formattedData = data.sessions.map((session, index) => ({
+        name: index + 1,
+        kilogram: session.kilogram,
+        calories: session.calories
+    }));
+
+    // Style personnalisé pour le tooltip
+    const CustomTooltip = ({ active, payload }) => {
+        if (active && payload && payload.length) {
+            return (
+                <div className="bg-red-500 text-white p-2">
+                    <p>{`${payload[0].value}kg`}</p>
+                    <p>{`${payload[1].value}Kcal`}</p>
                 </div>
-            ))}
+            );
+        }
+        return null;
+    };
+
+    return (
+        <div className="bg-gray-50 p-6 rounded-md">
+            <div className="flex justify-between items-center mb-8">
+                <div>
+                    <h2 className="text-base font-medium">Activité quotidienne</h2>
+                </div>
+                <div className="flex gap-4">
+                    <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-black"></div>
+                        <span className="text-sm text-gray-500">Poids (kg)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                        <span className="text-sm text-gray-500">Calories brûlées (kCal)</span>
+                    </div>
+                </div>
+            </div>
+
+            <ResponsiveContainer width="100%" height={200}>
+                <BarChart
+                    data={formattedData}
+                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                    barGap={8}
+                >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis
+                        dataKey="name"
+                        tickLine={false}
+                        tick={{ fill: '#9B9EAC' }}
+                    />
+                    <YAxis
+                        yAxisId="kilogram"
+                        orientation="right"
+                        tickLine={false}
+                        axisLine={false}
+                        tick={{ fill: '#9B9EAC' }}
+                        domain={['dataMin - 1', 'dataMax + 1']}
+                    />
+                    <YAxis
+                        yAxisId="calories"
+                        orientation="left"
+                        hide={true}
+                    />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Bar
+                        yAxisId="kilogram"
+                        dataKey="kilogram"
+                        fill="#282D30"
+                        radius={[3, 3, 0, 0]}
+                        barSize={7}
+                    />
+                    <Bar
+                        yAxisId="calories"
+                        dataKey="calories"
+                        fill="#E60000"
+                        radius={[3, 3, 0, 0]}
+                        barSize={7}
+                    />
+                </BarChart>
+            </ResponsiveContainer>
         </div>
     );
 }
