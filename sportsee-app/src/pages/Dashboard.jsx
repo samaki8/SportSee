@@ -58,42 +58,73 @@ function Dashboard() {
             </div>
         );
     }
-
     return (
         <div className="flex">
             <NavLeft />
             <div className="flex-1">
                 <NavTop />
-                <div className="dashboard p-8">
+                <div className="dashboard px-[109px]">
                     {userData?.data && <Header userId={userId} userData={userData.data} />}
-                    <div className="flex gap-8 mb-8">
-                        {userActivity?.data && <Poids data={userActivity.data} />}
-                    </div>
-                    <div className="flex gap-8 mb-8">
-                        {userAverageSessions?.data && <Objectifs data={userAverageSessions.data} />}
-                        {userPerformance?.data && <Radar data={userPerformance.data} />}
-                        {userData?.data && (
-                            <Kpi
-                                userId={Number(userId)}
-                                todayScore={userData.data.todayScore || userData.data.score}
-                            />
-                        )}
-                    </div>
                     <div className="flex gap-8">
-                        {userData?.data && (
-                            <>
-                                <Calories userId={Number(userId)} userData={userData.data} />
-                                <Proteines userId={Number(userId)} userData={userData.data} />
-                                <Glucides userId={Number(userId)} userData={userData.data} />
-                                <Lipides userId={Number(userId)} userData={userData.data} />
-                            </>
-                        )}
+                        <div className="flex-1">
+                            {userActivity?.data && <Poids data={userActivity.data} />}
+                            <div className="flex gap-8 mt-8">
+                                {userAverageSessions?.data && <Objectifs data={userAverageSessions.data} />}
+                                {userPerformance?.data && <Radar data={userPerformance.data} />}
+                                {userData?.data && (
+                                    <Kpi
+                                        userId={Number(userId)}
+                                        todayScore={userData.data.todayScore || userData.data.score}
+                                    />
+                                )}
+                            </div>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                            {userData?.data && <Calories userId={Number(userId)} userData={userData.data} />}
+                            {userData?.data && <Proteines userId={Number(userId)} userData={userData.data} />}
+                            {userData?.data && <Glucides userId={Number(userId)} userData={userData.data} />}
+                            {userData?.data && <Lipides userId={Number(userId)} userData={userData.data} />}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     );
 
+    /*
+        return (
+            <div className="flex">
+                <NavLeft />
+                <div className="flex-1">
+                    <NavTop />
+                    <div className="dashboard px-[109px] ">
+                        {userData?.data && <Header userId={userId} userData={userData.data} />}
+                        <div className="flex gap-8 mb-12">
+                            {userActivity?.data && <Poids data={userActivity.data} />}
+                            <div className="flex flex-col gap-4">
+                                {userData?.data && <Calories userId={Number(userId)} userData={userData.data} />}
+                                {userData?.data && <Proteines userId={Number(userId)} userData={userData.data} />}
+                                {userData?.data && <Glucides userId={Number(userId)} userData={userData.data} />}
+                                {userData?.data && <Lipides userId={Number(userId)} userData={userData.data} />}
+                            </div>
+    
+                        </div>
+                        <div className="flex gap-8 mb-8">
+                            {userAverageSessions?.data && <Objectifs data={userAverageSessions.data} />}
+                            {userPerformance?.data && <Radar data={userPerformance.data} />}
+                            {userData?.data && (
+                                <Kpi
+                                    userId={Number(userId)}
+                                    todayScore={userData.data.todayScore || userData.data.score}
+                                />
+                            )}
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        );
+    */
 }
 
 export default Dashboard;

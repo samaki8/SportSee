@@ -6,7 +6,7 @@ function Header({ userId, userData }) {
     if (!userData || !userData.userInfos) return null;
 
     return (
-        <header className="px-[109px] py-[68px]">
+        <header className="py-[68px]">
             <h1 className="text-5xl mb-[41px]">
                 Bonjour <span className="text-red-500">{userData.userInfos.firstName}</span>
             </h1>

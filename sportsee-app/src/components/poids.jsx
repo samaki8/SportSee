@@ -29,8 +29,8 @@ function Poids({ data }) {
     };
 
     return (
-        <div className="bg-gray-50 p-6 rounded-md">
-            <div className="flex justify-between items-center mb-8">
+        <div className="bg-gray-50 p-6 rounded-md px-[109px] w-[835px] h-[320px]">
+            <div className="flex justify-between items-center mb-12" >
                 <div>
                     <h2 className="text-base font-medium">Activité quotidienne</h2>
                 </div>
@@ -49,14 +49,17 @@ function Poids({ data }) {
             <ResponsiveContainer width="100%" height={200}>
                 <BarChart
                     data={formattedData}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                    margin={{ top: 5, right: 30, left: 40, bottom: 30 }}
                     barGap={8}
+                    barsize={7}
                 >
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                     <XAxis
                         dataKey="name"
                         tickLine={false}
                         tick={{ fill: '#9B9EAC' }}
+                        //margin={{ bottom: 20 }}
+                        dy={10} // Décaler l'axe X vers le bas
                     />
                     <YAxis
                         yAxisId="kilogram"
@@ -65,11 +68,15 @@ function Poids({ data }) {
                         axisLine={false}
                         tick={{ fill: '#9B9EAC' }}
                         domain={['dataMin - 1', 'dataMax + 1']}
+                        // Interval={2} // 2 intervallles au lieu de 3
+                        ticks={[68, 70, 72, 74]} // Spécifier les ticks
+                        dx={10} // Décaler l'axe Y vers la droite
                     />
                     <YAxis
                         yAxisId="calories"
                         orientation="left"
                         hide={true}
+                        Interval={2}
                     />
                     <Tooltip content={<CustomTooltip />} />
                     <Bar

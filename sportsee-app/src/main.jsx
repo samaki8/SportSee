@@ -17,8 +17,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          {/* Redirection par défaut vers /user/12 */}
-          <Route index element={<Navigate to="/user/12" />} />
+          {/* Redirection par défaut vers /user/18 */}
+          <Route index element={<Navigate to="/user/18" />} />
           {/*Route pour afficher le dashboard avec un userId */}
           <Route path="user/:userId" element={<Dashboard />} />
         </Route>
