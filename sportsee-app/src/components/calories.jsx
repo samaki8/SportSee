@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import caloriesIcon from '../assets/icons/calories-icon.svg?react';
+import CaloriesIcon from '../assets/icons/calories-icon.svg?react';
 
 function Calories({ userId, userData }) {
   if (!userId || !userData.keyData) {
@@ -10,7 +10,7 @@ function Calories({ userId, userData }) {
   return (
     <div className="bg-[#FBFBFB] w-[258px] h-[124px] rounded-md p-8 flex items-center">
       <div className="bg-[rgba(255,0,0,0.1)] p-4 rounded-md mr-6">
-        <caloriesIcon className="w-6 h-6 text-red-500" />
+        <CaloriesIcon className="w-6 h-6 text-red-500" />
       </div>
       <div className="flex flex-col">
         <span className="text-xl font-bold">

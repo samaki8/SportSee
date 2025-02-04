@@ -2,7 +2,7 @@
 // Lipides.jsx
 import PropTypes from 'prop-types';
 import React from 'react';
-import lipidesIcon from '../assets/icons/fat-icon.svg?react';
+import LipidesIcon from '../assets/icons/fat-icon.svg?react';
 
 function Lipides({ userId, userData }) {
     if (!userId || !userData.keyData) {
@@ -12,7 +12,7 @@ function Lipides({ userId, userData }) {
     return (
         <div className="bg-[#FBFBFB] w-[258px] h-[124px] rounded-md p-8 flex items-center">
             <div className="bg-[rgba(253,81,129,0.1)] p-4 rounded-md mr-6">
-                <lipidesIcon className="w-6 h-6 text-[#FD5181]" />
+                <LipidesIcon className="w-6 h-6 text-[#FD5181]" />
             </div>
             <div className="flex flex-col">
                 <span className="text-xl font-bold">

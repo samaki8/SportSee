@@ -7,8 +7,8 @@ function Header({ userId, userData }) {
 
     return (
         <header className="py-[68px]">
-            <h1 className="text-5xl mb-[41px]">
-                Bonjour <span className="text-red-500">{userData.userInfos.firstName}</span>
+            <h1 className="text-5xl bold mb-[41px]">
+                Bonjour <span className="text-[#E60000]">{userData.userInfos.firstName}</span>
             </h1>
             <p className="text-lg">
                 Félicitation ! Vous avez explosé vos objectifs hier 👏

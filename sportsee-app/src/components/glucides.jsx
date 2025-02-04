@@ -1,7 +1,7 @@
 // Glucides.jsx
 import PropTypes from 'prop-types';
 import React from 'react';
-import glucidesIcon from '../assets/icons/carbs-icon.svg?react';
+import GlucidesIcon from '../assets/icons/carbs-icon.svg?react';
 
 function Glucides({ userId, userData }) {
     if (!userId || !userData.keyData) {
@@ -11,7 +11,7 @@ function Glucides({ userId, userData }) {
     return (
         <div className="bg-[#FBFBFB] w-[258px] h-[124px] rounded-md p-8 flex items-center">
             <div className="bg-[rgba(249,206,35,0.1)] p-4 rounded-md mr-6">
-                <glucidesIcon className="w-6 h-6 text-[#F9CE23]" />
+                <GlucidesIcon className="w-6 h-6 text-[#F9CE23]" />
             </div>
             <div className="flex flex-col">
                 <span className="text-xl font-bold">

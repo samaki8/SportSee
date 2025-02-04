@@ -19,7 +19,7 @@ function Poids({ data }) {
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
-                <div className="bg-red-500 text-white p-2">
+                <div className="bg-[#E60000] text-white p-2">
                     <p>{`${payload[0].value}kg`}</p>
                     <p>{`${payload[1].value}Kcal`}</p>
                 </div>
@@ -29,7 +29,7 @@ function Poids({ data }) {
     };
 
     return (
-        <div className="bg-gray-50 p-6 rounded-md px-[109px] w-[835px] h-[320px]">
+        <div className="bg-gray-50 p-6 rounded-md w-[835px] h-[320px]">
             <div className="flex justify-between items-center mb-12" >
                 <div>
                     <h2 className="text-base font-medium">Activité quotidienne</h2>
@@ -40,7 +40,7 @@ function Poids({ data }) {
                         <span className="text-sm text-gray-500">Poids (kg)</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                        <div className="w-2 h-2 rounded-full bg-[#E60000]"></div>
                         <span className="text-sm text-gray-500">Calories brûlées (kCal)</span>
                     </div>
                 </div>
