@@ -31,19 +31,19 @@ function RadarComponent({ data }) {
     });
 
     return (
-        <div className="bg-[#282D30] rounded-md w-[258px] h-[263px] p-4">
+        <div className="bg-[#282D30] rounded-md w-[258px] h-[263px] ">
             <ResponsiveContainer width="100%" height="100%">
                 <RadarChart
                     cx="50%"
                     cy="50%"
-                    outerRadius="65%"
+                    outerRadius="72%"
                     data={formattedData}
                 >
                     <PolarGrid
                         gridType="polygon"
                         radialLines={false}
                         stroke="white"
-                        strokeOpacity={0.7}
+
                     />
                     <PolarAngleAxis
                         dataKey="subject"
@@ -52,8 +52,9 @@ function RadarComponent({ data }) {
                         tick={{
                             fill: 'white',
                             fontSize: 12,
-                            opacity: 0.7
+                            dy: 4
                         }}
+                        radius={80}
                     />
                     <Radar
                         name="Performance"
@@ -61,6 +62,10 @@ function RadarComponent({ data }) {
                         stroke="#FF0101"
                         fill="#FF0101"
                         fillOpacity={0.7}
+                        animationBegin={200}
+                        animationDuration={2000}
+                        animationEasing="ease-out"
+
                     />
                 </RadarChart>
             </ResponsiveContainer>

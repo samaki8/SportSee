@@ -17,14 +17,16 @@ function Kpi({ userId, todayScore }) {
             <ResponsiveContainer width="100%" height="100%">
                 <RadialBarChart
                     cx="50%"
-                    cy="50%"
+                    cy="40%"
                     innerRadius="70%"
                     outerRadius="80%"
                     barSize={10}
                     data={data}
-                    startAngle={90}
-                    endAngle={450}
+                    startAngle={180}
+                    endAngle={-180}
+
                 >
+                    <circle cx="50%" cy="40%" fill="white" r="70"></circle>
                     <PolarAngleAxis
                         type="number"
                         domain={[0, 100]}
@@ -32,11 +34,12 @@ function Kpi({ userId, todayScore }) {
                         tick={false}
                     />
                     <RadialBar
-                        background
-                        clockWise
+
+                        //clockWise={false}
                         dataKey="value"
                         cornerRadius={10}
                         fill="#FF0000"
+                    //background
                     />
                 </RadialBarChart>
             </ResponsiveContainer>
@@ -51,9 +54,10 @@ function Kpi({ userId, todayScore }) {
     );
 }
 
+
 Kpi.propTypes = {
     userId: PropTypes.number.isRequired,
     todayScore: PropTypes.number.isRequired
 };
 
-export default Kpi;
+export default Kpi
