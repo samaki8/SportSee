@@ -49,9 +49,10 @@ function Poids({ data }) {
             <ResponsiveContainer width="100%" height={200}>
                 <BarChart
                     data={formattedData}
-                    margin={{ top: 5, right: 30, left: 40, bottom: 30 }}
+                    margin={{ top: 5, right: 0, left: 0, bottom: 0 }}
                     barGap={8}
                     barsize={7}
+                    barCategoryGap="0%" // Supprimer l'espace entre les barres
                 >
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                     <XAxis
@@ -60,7 +61,9 @@ function Poids({ data }) {
                         tick={{ fill: '#9B9EAC' }}
                         //margin={{ bottom: 20 }}
                         dy={10} // Décaler l'axe X vers le bas
+                        padding={{ left: -45, right: -50 }} // Ajouter du padding pour éviter que l'axe X dépasse
                     />
+
                     <YAxis
                         yAxisId="kilogram"
                         orientation="right"
@@ -69,7 +72,7 @@ function Poids({ data }) {
                         tick={{ fill: '#9B9EAC' }}
                         domain={['dataMin - 1', 'dataMax + 1']}
                         // Interval={2} // 2 intervallles au lieu de 3
-                        ticks={[68, 70, 72, 74]} // Spécifier les ticks
+                        ticks={[69, 70, 71]} // Spécifier les ticks
                         dx={10} // Décaler l'axe Y vers la droite
                     />
                     <YAxis

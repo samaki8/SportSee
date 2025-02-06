@@ -30,17 +30,19 @@ function Objectifs({ data }) {
                 fill="rgba(0, 0, 0, 0.1)"
                 x={points[0].x}
                 width={1000}
-                height={300}
+                height={200}
+                y={0}  // Position depuis le haut
+
             />
         );
     };
 
     return (
-        <div className="bg-red-500 p-4 rounded-md w-[258px] h-[263px]">
-            <h2 className="text-white text-base font-medium opacity-50 mb-4">
+        <div className="bg-[#E60000] p-4 rounded-md w-[258px] h-[263px]">
+            <h2 className="text-white text-base font-medium opacity-50 mb-4 flex-wrap">
                 Durée moyenne des sessions
             </h2>
-            <ResponsiveContainer width="100%" height={180}>
+            <ResponsiveContainer width="100%" height={200}>
                 <LineChart
                     data={formattedData}
                     margin={{ top: 5, right: 10, left: 10, bottom: 5 }}
@@ -63,13 +65,13 @@ function Objectifs({ data }) {
                     <Line
                         type="natural"
                         dataKey="sessionLength"
-                        stroke="rgba(255, 255, 255, 0.5)"
+                        stroke="rgba(255, 255, 255, 0.4)"
                         strokeWidth={2}
                         dot={false}
                         activeDot={{
                             stroke: "rgba(255, 255, 255, 0.5)",
                             strokeWidth: 2,
-                            r: 4,
+                            r: 5,
                             fill: "white"
                         }}
                     />

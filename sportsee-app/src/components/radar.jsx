@@ -7,12 +7,28 @@ function RadarComponent({ data }) {
         return <div>Chargement...<span className="loading loading-spinner loading-md"></span></div>;
     }
 
-    // Formater les données pour le graphique radar
-    const formattedData = data.data.map(item => ({
-        subject: data.kind[item.kind],
-        value: item.value,
-        fullMark: 150
-    }));
+    // Traduction des catégories en français
+    const translations = {
+        'cardio': 'Cardio',
+        'energy': 'Energie',
+        'endurance': 'Endurance',
+        'strength': 'Force',
+        'speed': 'Vitesse',
+        'intensity': 'Intensité'
+    };
+
+    // Ordre d'affichage souhaité
+    const order = ['intensity', 'speed', 'strength', 'endurance', 'energy', 'cardio'];
+
+    // Formater et réorganiser les données
+    const formattedData = order.map(category => {
+        const item = data.data.find(d => data.kind[d.kind].toLowerCase() === category);
+        return {
+            subject: translations[category],
+            value: item ? item.value : 0,
+            fullMark: 150
+        };
+    });
 
     return (
         <div className="bg-[#282D30] rounded-md w-[258px] h-[263px] p-4">
