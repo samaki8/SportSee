@@ -49,7 +49,7 @@ function Poids({ data }) {
             <ResponsiveContainer width="100%" height={200}>
                 <BarChart
                     data={formattedData}
-                    margin={{ top: 5, right: 0, left: 0, bottom: 0 }}
+                    margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
                     barGap={8}
                     barsize={7}
                     barCategoryGap="0%" // Supprimer l'espace entre les barres
@@ -70,9 +70,9 @@ function Poids({ data }) {
                         tickLine={false}
                         axisLine={false}
                         tick={{ fill: '#9B9EAC' }}
-                        domain={['dataMin - 1', 'dataMax + 1']}
+                        domain={['68', '72']}
                         // Interval={2} // 2 intervallles au lieu de 3
-                        ticks={[69, 70, 71]} // Spécifier les ticks
+                        ticks={[68, 69, 70]} // Spécifier les ticks
                         dx={10} // Décaler l'axe Y vers la droite
                     />
                     <YAxis

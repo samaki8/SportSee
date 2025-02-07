@@ -16,13 +16,25 @@ function Objectifs({ data }) {
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
-                <div className="bg-white p-2">
-                    <p className="text-black">{`${payload[0].value} min`}</p>
+                <div className="bg-white p-0.5">
+                    <p style={{
+                        fontFamily: 'Roboto',
+                        fontSize: '8px',
+                        fontWeight: '500',
+                        lineHeight: '24px',
+                        textAlign: 'center',
+                        textUnderlinePosition: 'from-font',
+                        textDecorationSkipInk: 'none',
+                        color: 'black'
+                    }}>
+                        {`${payload[0].value} min`}
+                    </p>
                 </div>
             );
         }
         return null;
     };
+
 
     const CustomCursor = ({ points }) => {
         return (
@@ -30,7 +42,8 @@ function Objectifs({ data }) {
                 fill="rgba(0, 0, 0, 0.1)"
                 x={points[0].x}
                 width={1000}
-                height={200}
+
+                height={263} // Ajuster la hauteur à 263px
                 y={0}  // Position depuis le haut
 
             />
@@ -38,9 +51,9 @@ function Objectifs({ data }) {
     };
 
     return (
-        <div className="bg-[#E60000] p-4 rounded-md w-[258px] h-[263px]">
-            <h2 className="text-white text-base font-medium opacity-50 mb-4 flex-wrap">
-                Durée moyenne des sessions
+        <div className="bg-[#E60000] p-3 rounded-md w-[258px] h-[263px]">
+            <h2 className="text-white text-base font-medium opacity-50 mb-1 flex-wrap">
+                Durée moyenne des <br /> sessions
             </h2>
             <ResponsiveContainer width="100%" height={200}>
                 <LineChart
