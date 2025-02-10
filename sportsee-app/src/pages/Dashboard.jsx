@@ -10,6 +10,7 @@ import Header from '../components/header';
 import Poids from '../components/poids';
 import NavTop from '../components/navTop';
 import NavLeft from '../components/navLeft';
+import Tableau from '../components/tableau';
 import Calories from '../components/calories';
 import Glucides from '../components/glucides';
 import Kpi from '../components/kpi';
@@ -80,10 +81,13 @@ function Dashboard() {
                             </div>
                         </div>
                         <div className="flex flex-col gap-4">
-                            {userData?.data && <Calories userId={Number(userId)} userData={userData.data} />}
+                            {userData?.data && <Tableau userId={Number(userId)} userData={userData.data} />}
+                            {/*}{userData?.data && <Calories userId={Number(userId)} userData={userData.data} />}
                             {userData?.data && <Proteines userId={Number(userId)} userData={userData.data} />}
                             {userData?.data && <Glucides userId={Number(userId)} userData={userData.data} />}
                             {userData?.data && <Lipides userId={Number(userId)} userData={userData.data} />}
+                            </div>*/}
+
                         </div>
                     </div>
                 </div>
