@@ -1,4 +1,7 @@
 # SportSee
+# P12-SportSee-app
+
+# Projet n°12 - Développeur Applications Javascript React
 
 Ce repo contient le code source pour l'application SportSee, un tableau de bord d'analyse sportive.  Cette application consomme une API pour récupérer les données des utilisateurs.
 

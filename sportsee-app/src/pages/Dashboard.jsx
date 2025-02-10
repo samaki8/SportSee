@@ -1,4 +1,8 @@
-//sportsee-app/src/pages/Dashboard.jsx
+/**
+ * @file Composant Dashboard.
+ * @module Dashboard
+ */
+
 //import "./styles/dashboard.css";
 import React from 'react';
 
@@ -19,29 +23,81 @@ import Objectifs from '../components/objectifs';
 import Proteines from '../components/proteines';
 import Radar from '../components/radar';
 
-
+/**
+ * Composant principal du Dashboard affichant les données de l'utilisateur.
+ * @component Dashboard
+ * @returns {JSX.Element} Le rendu du Dashboard avec les informations de l'utilisateur.
+ */
 function Dashboard() {
+    /**
+     * Récupère l'identifiant de l'utilisateur depuis les paramètres de l'URL.
+     * @type {string}
+     */
     const { userId } = useParams();
+    /**
+     * Données de l'utilisateur.
+     * @type {object | null}
+     * @default null
+     */
     const [userData, setUserData] = useState(null);
+    /**
+     * Activité de l'utilisateur (poids et calories).
+     * @type {object | null}
+     * @default null
+     */
     const [userActivity, setUserActivity] = useState(null);
+    /**
+     * Performance de l'utilisateur (énergie, endurance, etc.).
+     * @type {object | null}
+     * @default null
+     */
     const [userPerformance, setUserPerformance] = useState(null); // Correction de la typo
+    /**
+     * Sessions moyennes de l'utilisateur.
+     * @type {object | null}
+     * @default null
+     */
     const [userAverageSessions, setUserAverageSessions] = useState(null); // Correction du nom de variable
 
+    /**
+     * useEffect pour récupérer les données de l'utilisateur.
+     * Récupère les données si l'ID de l'utilisateur est disponible.
+     */
     useEffect(() => {
+        /**
+         * Fonction asynchrone pour récupérer les données.
+         * @async
+         */
         const getData = async () => {
             if (!userId) return console.log('No user');
 
             // Récupération des données utilisateur
             try {
+                /**
+                 * Données de l'utilisateur.
+                 * @type {object}
+                 */
                 const userData = await fetchUserData(userId);
                 setUserData(userData);
 
+                /**
+                 * Activité de l'utilisateur.
+                 * @type {object}
+                 */
                 const userActivity = await fetchUserActivity(userId);
                 setUserActivity(userActivity);
 
+                /**
+                 * Performance de l'utilisateur.
+                 * @type {object}
+                 */
                 const userPerformance = await fetchUserPerformance(userId);
                 setUserPerformance(userPerformance); // Correction de la typo
 
+                /**
+                 * Sessions moyennes de l'utilisateur.
+                 * @type {object}
+                 */
                 const userAverageSessions = await fetchUserAverageSessions(userId);
                 setUserAverageSessions(userAverageSessions);
             } catch (error) {
