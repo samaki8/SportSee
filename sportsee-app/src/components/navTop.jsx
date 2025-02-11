@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
+/**
+ * NavTop component that renders the top navigation bar with logo and navigation links.
+ *
+ * @returns {JSX.Element} The rendered NavTop component
+ */
+
 function NavTop() {
     return (
         <nav className="h-[91px] bg-black flex items-center justify-between ">

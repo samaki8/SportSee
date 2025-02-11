@@ -2,6 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis } from 'recharts';
 
+
+/**
+ * Kpi component that displays a radial bar chart representing the user's score.
+ *
+ * @param {Object} props - The component props
+ * @param {number} props.userId - The ID of the user
+ * @param {number} props.todayScore - The score of the user for today, represented as a fraction between 0 and 1
+ * @returns {JSX.Element|null} The rendered KPI component, or a loading indicator if the score is not available
+ */
 function Kpi({ userId, todayScore }) {
     if (!todayScore) {
         return <div>Chargement Kpi...<span className="loading loading-spinner loading-md"></span></div>;

@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "build:css": "postcss src/styles.css -o dist/styles.css",
     "watch:css": "postcss src/styles.css -o dist/styles.css --watch",
-    "doc": "jsdoc [vos fichiers et dossiers source] -c jsdoc.conf.json"
+    "docs": "jsdoc -c jsdoc.conf.json"
   },
   "dependencies": {
     "daisyui": "^4.12.23",

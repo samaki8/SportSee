@@ -1,4 +1,32 @@
-import PropTypes from 'prop-types';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Objectifs.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Objectifs.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types';
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Rectangle } from 'recharts';
 
@@ -14,7 +42,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Rectangle 
  */
 function Objectifs({ data }) {
     if (!data || !data.sessions) {
-        return <div>Chargement...<span className="loading loading-spinner loading-md"></span></div>;
+        return &lt;div>Chargement...&lt;span className="loading loading-spinner loading-md">&lt;/span>&lt;/div>;
     }
 
     const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -24,10 +52,10 @@ function Objectifs({ data }) {
     }));
 
     const CustomTooltip = ({ active, payload }) => {
-        if (active && payload && payload.length) {
+        if (active &amp;&amp; payload &amp;&amp; payload.length) {
             return (
-                <div className="bg-white p-0.5">
-                    <p style={{
+                &lt;div className="bg-white p-0.5">
+                    &lt;p style={{
                         fontFamily: 'Roboto',
                         fontSize: '8px',
                         fontWeight: '500',
@@ -39,8 +67,8 @@ function Objectifs({ data }) {
                         padding: '0',
                     }}>
                         {`${payload[0].value} min`}
-                    </p>
-                </div>
+                    &lt;/p>
+                &lt;/div>
             );
         }
         return null;
@@ -49,7 +77,7 @@ function Objectifs({ data }) {
 
     const CustomCursor = ({ points }) => {
         return (
-            <Rectangle
+            &lt;Rectangle
                 fill="rgba(0, 0, 0, 0.1)"
                 x={points[0].x}
                 width={1000}
@@ -64,32 +92,32 @@ function Objectifs({ data }) {
     };
 
     return (
-        <div className="bg-[#E60000] p-3 rounded-md w-[258px] h-[263px] Objectifs relative">
-            <h2 className="text-white text-base font-medium opacity-50 mb-1 flex-wrap absolute top-3 left-3">
-                Durée moyenne des <br /> sessions
-            </h2>
-            <ResponsiveContainer width="100%" height="100%">
+        &lt;div className="bg-[#E60000] p-3 rounded-md w-[258px] h-[263px] Objectifs relative">
+            &lt;h2 className="text-white text-base font-medium opacity-50 mb-1 flex-wrap absolute top-3 left-3">
+                Durée moyenne des &lt;br /> sessions
+            &lt;/h2>
+            &lt;ResponsiveContainer width="100%" height="100%">
 
-                <LineChart
+                &lt;LineChart
                     data={formattedData}
                     margin={{ top: 5, right: 10, left: 10, bottom: 5 }}
                 >
-                    <XAxis
+                    &lt;XAxis
                         dataKey="day"
                         stroke="rgba(255, 255, 255, 0.5)"
                         axisLine={false}
                         tickLine={false}
                         tick={{ fill: 'rgba(255, 255, 255, 0.5)' }}
                     />
-                    <YAxis
+                    &lt;YAxis
                         hide={true}
                         domain={['dataMin - 10', 'dataMax + 10']}
                     />
-                    <Tooltip
-                        content={<CustomTooltip />}
-                        cursor={<CustomCursor />}
+                    &lt;Tooltip
+                        content={&lt;CustomTooltip />}
+                        cursor={&lt;CustomCursor />}
                     />
-                    <Line
+                    &lt;Line
                         type="natural"
                         dataKey="sessionLength"
                         stroke="rgba(255, 255, 255, 0.4)"
@@ -102,9 +130,9 @@ function Objectifs({ data }) {
                             fill: "white"
                         }}
                     />
-                </LineChart>
-            </ResponsiveContainer>
-        </div>
+                &lt;/LineChart>
+            &lt;/ResponsiveContainer>
+        &lt;/div>
     );
 }
 
@@ -121,3 +149,26 @@ Objectifs.propTypes = {
 };
 
 export default Objectifs;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-Dashboard.html">Dashboard</a></li><li><a href="module-api.html">api</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#IconButton">IconButton</a></li><li><a href="global.html#InfoBox">InfoBox</a></li><li><a href="global.html#Kpi">Kpi</a></li><li><a href="global.html#NavTop">NavTop</a></li><li><a href="global.html#Objectifs">Objectifs</a></li><li><a href="global.html#Poids">Poids</a></li><li><a href="global.html#RadarComponent">RadarComponent</a></li><li><a href="global.html#Tableau">Tableau</a></li><li><a href="global.html#root">root</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Feb 11 2025 16:38:44 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -2,6 +2,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+
+/**
+ * Header component that displays a greeting message and congratulates the user for achieving their goals.
+ *
+ * @param {Object} props - The component props
+ * @param {string} props.userId - The ID of the user
+ * @param {Object} props.userData - The data of the user
+ * @param {Object} props.userData.userInfos - Information about the user
+ * @param {string} props.userData.userInfos.firstName - The first name of the user
+ * @returns {JSX.Element|null} The rendered header component, or null if user data is not available
+ */
 function Header({ userId, userData }) {
     if (!userData || !userData.userInfos) return null;
 
