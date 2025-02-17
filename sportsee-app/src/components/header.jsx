@@ -17,11 +17,11 @@ function Header({ userId, userData }) {
     if (!userData || !userData.userInfos) return null;
 
     return (
-        <header className="py-[68px]">
+        <header className="header">
             <h1 className="text-5xl bold mb-[41px]">
                 Bonjour <span className="text-[#E60000]">{userData.userInfos.firstName}</span>
             </h1>
-            <p className="text-lg">
+            <p className="text-lg mb-5">
                 Félicitation ! Vous avez explosé vos objectifs hier 👏
             </p>
         </header>

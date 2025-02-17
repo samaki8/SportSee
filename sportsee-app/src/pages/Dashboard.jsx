@@ -120,7 +120,7 @@ function Dashboard() {
             <NavLeft />
             <div className="flex-1">
                 <NavTop />
-                <div className="dashboard px-[109px] py-[100px]">
+                <div className="dashboard px-[109px] py-[50px]">
                     {userData?.data && <Header userId={userId} userData={userData.data} />}
                     <div className="flex gap-8">
                         <div className="flex-1">
@@ -136,7 +136,7 @@ function Dashboard() {
                                 )}
                             </div>
                         </div>
-                        <div className="flex flex-col gap-4">
+                        <div className="Tableau flex flex-col gap-7">
                             {userData?.data && <Tableau userId={Number(userId)} userData={userData.data} />}
                             {/*}{userData?.data && <Calories userId={Number(userId)} userData={userData.data} />}
                             {userData?.data && <Proteines userId={Number(userId)} userData={userData.data} />}
