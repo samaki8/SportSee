@@ -16,9 +16,9 @@ import './styles/Dashboard.css'
  */
 function App() {
   return (
-    <div>
+    <>
       <Outlet />
-    </div>
+    </>
   )
 }
 

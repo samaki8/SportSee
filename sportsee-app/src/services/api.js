@@ -19,7 +19,7 @@ const BASE_URL = 'http://localhost:3000';
  * @constant {boolean}
  * @default false
  */
-const USE_MOCK = false; // Mettez à false pour utiliser l'API réelle
+const USE_MOCK = true; // Mettez à false pour utiliser l'API réelle
 
 /**
  * Recherche un utilisateur par ID dans un tableau de données.
@@ -28,7 +28,9 @@ const USE_MOCK = false; // Mettez à false pour utiliser l'API réelle
  * @param {number} id - L'ID de l'utilisateur à rechercher.
  * @returns {object | undefined} L'objet utilisateur trouvé, ou undefined si non trouvé.
  */
-const findUserById = (data, id) => data.find(item => item.id === id || item.userId === id);
+const findUserById = (data, id) => data.find(item => {
+    return item.id === Number(id) || item.userId === Number(id)
+});
 
 /**
  * Récupère les données principales de l'utilisateur à partir de l'API.
@@ -43,6 +45,7 @@ export const fetchUserData = async (userId) => {
         return new Promise((resolve) => {
             setTimeout(() => {
                 const userData = findUserById(USER_MAIN_DATA, userId);
+                console.log('Promise')
                 resolve({ data: userData });
             }, 500);
         });
@@ -64,11 +67,15 @@ export const fetchUserData = async (userId) => {
  * @returns {Promise<object>} Une promesse résolvant avec les données d'activité de l'utilisateur.
  * @throws {Error} Si la récupération des données échoue.
  */
+let i = 0;
 export const fetchUserActivity = async (userId) => {
+    console.log('fetchUserActivity', 'je suis passé par la', i)
+    i = i + 1
     if (USE_MOCK) {
         return new Promise((resolve) => {
             setTimeout(() => {
                 const activityData = findUserById(USER_ACTIVITY, userId);
+                console.log(activityData)
                 resolve({ data: activityData });
             }, 500);
         });
@@ -91,6 +98,7 @@ export const fetchUserActivity = async (userId) => {
  * @throws {Error} Si la récupération des données échoue.
  */
 export const fetchUserAverageSessions = async (userId) => {
+    console.log('FetchUserAverageSessions')
     if (USE_MOCK) {
         return new Promise((resolve) => {
             setTimeout(() => {
@@ -117,6 +125,7 @@ export const fetchUserAverageSessions = async (userId) => {
  * @throws {Error} Si la récupération des données échoue.
  */
 export const fetchUserPerformance = async (userId) => {
+    console.log('fetchUserPerformance')
     if (USE_MOCK) {
         return new Promise((resolve) => {
             setTimeout(() => {

@@ -64,7 +64,7 @@ function Objectifs({ data }) {
     };
 
     return (
-        <div className="bg-[#E60000] p-3 rounded-md w-[258px] h-[263px] Objectifs relative">
+        <div className="bg-[#E60000] rounded-md w-[258px] h-[263px] Objectifs relative">
             <h2 className="text-white text-base font-medium opacity-50 mb-1 flex-wrap absolute top-3 left-3">
                 Durée moyenne des <br /> sessions
             </h2>
