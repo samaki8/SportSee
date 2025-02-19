@@ -83,7 +83,7 @@ function Tableau({ userId, userData }) {
     ];
 
     return (
-        <div style={{ display: 'flex-direction: column' }}>
+        <div classame="icons" style={{ display: 'flex-direction: column' }}>
             {infoData.map((item, index) => (
                 <InfoBox key={index} userId={userId} userData={userData} {...item} />
             ))}
