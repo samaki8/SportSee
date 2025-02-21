@@ -136,7 +136,7 @@ function Dashboard() {
                                 )}
                             </div>
                         </div>
-                        <div className="Tableau flex flex-col gap-7">
+                        <div className="Tableau flex flex-col gap-7 mb-5">
                             {userData?.data && <Tableau userId={Number(userId)} userData={userData.data} />}
                             {/*}{userData?.data && <Calories userId={Number(userId)} userData={userData.data} />}
                             {userData?.data && <Proteines userId={Number(userId)} userData={userData.data} />}

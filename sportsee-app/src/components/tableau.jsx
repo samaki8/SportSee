@@ -27,7 +27,7 @@ function InfoBox({ userId, userData, icon: Icon, color, label, dataKey, unit }) 
     }
 
     return (
-        <div className="bg-[#FBFBFB] w-[258px] h-[124px] rounded-md p-8 flex items-center">
+        <div className="icone bg-[#FBFBFB] w-[258px] h-[124px] rounded-md p-8 flex items-center gap-6">
             <div className={`bg-[rgba(${color},0.1)] p-4 rounded-md mr-6`}>
                 <Icon className={`w-6 h-6 text-[${color}]`} />
             </div>
@@ -83,7 +83,7 @@ function Tableau({ userId, userData }) {
     ];
 
     return (
-        <div classame="icons" style={{ display: 'flex-direction: column' }}>
+        <div className="icons flex flex-col gap-10 items-center">
             {infoData.map((item, index) => (
                 <InfoBox key={index} userId={userId} userData={userData} {...item} />
             ))}
