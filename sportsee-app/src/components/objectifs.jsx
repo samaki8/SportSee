@@ -72,7 +72,7 @@ function Objectifs({ data }) {
 
                 <LineChart
                     data={formattedData}
-                    margin={{ top: 5, right: 10, left: 10, bottom: 5 }}
+                    margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
                 >
                     <XAxis
                         dataKey="day"
