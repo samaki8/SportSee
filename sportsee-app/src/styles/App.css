@@ -5,9 +5,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+
 #root {
-  /*max-width: 1440px;*/
+  max-width: 1440px;
+  width: 1024px;
+  margin: 0 auto;
+  height: 780px;
+}
   /*margin: 0 auto;*/
   /*padding: 2rem;*/
   /*text-align: center;*/
