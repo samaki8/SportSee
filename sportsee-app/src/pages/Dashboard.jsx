@@ -2,13 +2,7 @@
  * @file Composant Dashboard.
  * @module Dashboard
  */
-/**
- * Composant principal du Dashboard affichant les données de l'utilisateur.
- * @component
- * @param {Object} props
- * @param {string} props.userId - L'identifiant de l'utilisateur (implicite via useParams)
- * @returns {JSX.Element} Le rendu du Dashboard avec les informations de l'utilisateur.
- */
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchUserData, fetchUserActivity, fetchUserPerformance, fetchUserAverageSessions } from "../services/api";
@@ -21,33 +15,59 @@ import Kpi from '../components/kpi';
 import Objectifs from '../components/objectifs';
 import Radar from '../components/Radar';
 
+/**
+ * @typedef {Object} UserData
+ * @property {Object} data - Les données de l'utilisateur
+ */
 
-function Dashboard() {
-    /**
+/**
+ * @typedef {Object} UserActivity
+ * @property {Object} data - Les données d'activité de l'utilisateur
+ */
+
+/**
+ * @typedef {Object} UserPerformance
+ * @property {Object} data - Les données de performance de l'utilisateur
+ */
+
+/**
  * @typedef {Object} UserAverageSessions
  * @property {Object} data - Les données de sessions moyennes de l'utilisateur
  */
+
+/**
+ * Composant principal du Dashboard affichant les données de l'utilisateur.
+ * @component
+ * @returns {JSX.Element} Le rendu du Dashboard avec les informations de l'utilisateur.
+ */
+function Dashboard() {
+    /** @type {string} L'identifiant de l'utilisateur récupéré des paramètres de l'URL */
     const { userId } = useParams();
-    /**
- * @type {UserData|null}
- */
+
+    /** @type {UserData|null} Les données de l'utilisateur */
     const [userData, setUserData] = useState(null);
-    /**
- * @type {UserActivity|null}
- */
+
+    /** @type {UserActivity|null} Les données d'activité de l'utilisateur */
     const [userActivity, setUserActivity] = useState(null);
-    /**
- * @type {UserPerformance|null}
- */
+
+    /** @type {UserPerformance|null} Les données de performance de l'utilisateur */
     const [userPerformance, setUserPerformance] = useState(null);
-    /**
- * @type {UserAverageSessions|null}
- */
+
+    /** @type {UserAverageSessions|null} Les données de sessions moyennes de l'utilisateur */
     const [userAverageSessions, setUserAverageSessions] = useState(null);
+
+    /** @type {boolean} Indique si les données sont en cours de chargement */
     const [loading, setLoading] = useState(true);
+
+    /** @type {string|null} Message d'erreur en cas de problème lors du chargement des données */
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        /**
+         * Fonction asynchrone pour récupérer toutes les données de l'utilisateur.
+         * @async
+         * @function fetchData
+         */
         const fetchData = async () => {
             if (!userId) {
                 setError('No user ID provided');
@@ -124,4 +144,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
