@@ -19,7 +19,7 @@ const BASE_URL = 'http://localhost:3000';
  * @constant {boolean}
  * @default false
  */
-const USE_MOCK = true; // Mettez à false pour utiliser l'API réelle
+const USE_MOCK = false; // Mettez à false pour utiliser l'API réelle
 
 /**
  * Recherche un utilisateur par ID dans un tableau de données.

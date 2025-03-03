@@ -82,8 +82,8 @@ function Poids({ data }) {
                         tickLine={false}
                         tick={{ fill: '#9B9EAC' }}
                         //margin={{ bottom: 20 }}
-                        dy={10} // Décaler l'axe X vers le bas
-                        padding={{ left: -45, right: -50 }} // Ajouter du padding pour éviter que l'axe X dépasse
+                        dy={10}
+                        padding={{ left: -45, right: -50 }}
                     />
 
                     <YAxis

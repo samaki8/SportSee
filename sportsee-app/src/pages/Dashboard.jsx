@@ -2,156 +2,125 @@
  * @file Composant Dashboard.
  * @module Dashboard
  */
-
-//import "./styles/dashboard.css";
-import React from 'react';
-
+/**
+ * Composant principal du Dashboard affichant les données de l'utilisateur.
+ * @component
+ * @param {Object} props
+ * @param {string} props.userId - L'identifiant de l'utilisateur (implicite via useParams)
+ * @returns {JSX.Element} Le rendu du Dashboard avec les informations de l'utilisateur.
+ */
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from "react";
 import { fetchUserData, fetchUserActivity, fetchUserPerformance, fetchUserAverageSessions } from "../services/api";
-//import { fetchUserData } from "../assets/mocks/mockData";
 import Header from '../components/header';
 import Poids from '../components/poids';
 import NavTop from '../components/navTop';
 import NavLeft from '../components/navLeft';
-import Tableau from '../components/tableau';
-//import Calories from '../components/Calories.jsxold';
-//import Glucides from '../components/Glucides.jsxold';
+import Tableau from '../components/Tableau';
 import Kpi from '../components/kpi';
-//import Lipides from '../components/Lipides.jsxold';
 import Objectifs from '../components/objectifs';
-//import Proteines from '../components/Proteines.jsxold';
-import Radar from '../components/radar';
+import Radar from '../components/Radar';
 
-/**
- * Composant principal du Dashboard affichant les données de l'utilisateur.
- * @component Dashboard
- * @returns {JSX.Element} Le rendu du Dashboard avec les informations de l'utilisateur.
- */
+
 function Dashboard() {
     /**
-     * Récupère l'identifiant de l'utilisateur depuis les paramètres de l'URL.
-     * @type {string}
-     */
+ * @typedef {Object} UserAverageSessions
+ * @property {Object} data - Les données de sessions moyennes de l'utilisateur
+ */
     const { userId } = useParams();
     /**
-     * Données de l'utilisateur.
-     * @type {object | null}
-     * @default null
-     */
+ * @type {UserData|null}
+ */
     const [userData, setUserData] = useState(null);
     /**
-     * Activité de l'utilisateur (poids et calories).
-     * @type {object | null}
-     * @default null
-     */
+ * @type {UserActivity|null}
+ */
     const [userActivity, setUserActivity] = useState(null);
     /**
-     * Performance de l'utilisateur (énergie, endurance, etc.).
-     * @type {object | null}
-     * @default null
-     */
-    const [userPerformance, setUserPerformance] = useState(null); // Correction de la typo
+ * @type {UserPerformance|null}
+ */
+    const [userPerformance, setUserPerformance] = useState(null);
     /**
-     * Sessions moyennes de l'utilisateur.
-     * @type {object | null}
-     * @default null
-     */
-    const [userAverageSessions, setUserAverageSessions] = useState(null); // Correction du nom de variable
+ * @type {UserAverageSessions|null}
+ */
+    const [userAverageSessions, setUserAverageSessions] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    /**
-     * useEffect pour récupérer les données de l'utilisateur.
-     * Récupère les données si l'ID de l'utilisateur est disponible.
-     */
     useEffect(() => {
-        /**
-         * Fonction asynchrone pour récupérer les données.
-         * @async
-         */
-        const getData = async () => {
-            if (!userId) return console.log('No user');
+        const fetchData = async () => {
+            if (!userId) {
+                setError('No user ID provided');
+                setLoading(false);
+                return;
+            }
 
-            // Récupération des données utilisateur
             try {
-                /**
-                 * Données de l'utilisateur.
-                 * @type {object}
-                 */
-                const userData = await fetchUserData(userId);
+                const [userData, userActivity, userPerformance, userAverageSessions] = await Promise.all([
+                    fetchUserData(userId),
+                    fetchUserActivity(userId),
+                    fetchUserPerformance(userId),
+                    fetchUserAverageSessions(userId)
+                ]);
+
                 setUserData(userData);
-
-                /**
-                 * Activité de l'utilisateur.
-                 * @type {object}
-                 */
-                const userActivity = await fetchUserActivity(userId);
                 setUserActivity(userActivity);
-
-                /**
-                 * Performance de l'utilisateur.
-                 * @type {object}
-                 */
-                const userPerformance = await fetchUserPerformance(userId);
-                setUserPerformance(userPerformance); // Correction de la typo
-
-                /**
-                 * Sessions moyennes de l'utilisateur.
-                 * @type {object}
-                 */
-                const userAverageSessions = await fetchUserAverageSessions(userId);
+                setUserPerformance(userPerformance);
                 setUserAverageSessions(userAverageSessions);
             } catch (error) {
-                console.error("Erreur lors de la récupération des données:", error);
+                setError(error.message);
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
             }
         };
 
-        getData(); // Appel de la fonction
-    }, [userId]); // Fermeture correcte du useEffect
+        fetchData();
+    }, [userId]);
 
-    if (!userData || !userActivity || !userPerformance || !userAverageSessions) {
+    if (loading) {
         return (
             <div className="loading-container">
                 <span className="loading loading-spinner loading-md"></span>
             </div>
         );
     }
+
+    if (error) {
+        return <div className="error-message">Error: {error}</div>;
+    }
+
+    if (!userData || !userActivity || !userPerformance || !userAverageSessions) {
+        return <div className="error-message">No data available</div>;
+    }
+
     return (
         <div className="flex">
             <NavLeft />
             <div className="flex-1">
                 <NavTop />
                 <div className="dashboard px-[109px] py-[50px]">
-                    {userData?.data && <Header userId={userId} userData={userData.data} />}
+                    <Header userId={userId} userData={userData.data} />
                     <div className="flex gap-8">
                         <div className="flex-1">
-                            {userActivity?.data && <Poids data={userActivity.data} />}
+                            <Poids data={userActivity.data} />
                             <div className="flex gap-8 mt-8">
-                                {userAverageSessions?.data && <Objectifs data={userAverageSessions.data} />}
-                                {userPerformance?.data && <Radar data={userPerformance.data} />}
-                                {userData?.data && (
-                                    <Kpi
-                                        userId={Number(userId)}
-                                        todayScore={userData.data.todayScore || userData.data.score}
-                                    />
-                                )}
+                                <Objectifs data={userAverageSessions.data} />
+                                <Radar data={userPerformance.data} />
+                                <Kpi
+                                    userId={Number(userId)}
+                                    todayScore={userData.data.todayScore || userData.data.score}
+                                />
                             </div>
                         </div>
                         <div className="Tableau flex flex-col gap-7 mb-5">
-                            {userData?.data && <Tableau userId={Number(userId)} userData={userData.data} />}
-                            {/*}{userData?.data && <Calories userId={Number(userId)} userData={userData.data} />}
-                            {userData?.data && <Proteines userId={Number(userId)} userData={userData.data} />}
-                            {userData?.data && <Glucides userId={Number(userId)} userData={userData.data} />}
-                            {userData?.data && <Lipides userId={Number(userId)} userData={userData.data} />}
-                            </div>*/}
-
+                            <Tableau userId={Number(userId)} userData={userData.data} />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     );
-
-
 }
 
 export default Dashboard;
